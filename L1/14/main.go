@@ -13,12 +13,14 @@ func main() {
 
 	fmt.Println(reflect.TypeOf(i))
 
+	fmt.Printf("Type = %T\n", i)
+
 	var i1 interface {} = 2
 
 	definitionType(i1)
 
 }
-
+// Пустой интерфейс может держать значения любого типа
 func definitionType(i interface{}) {
 	switch i.(type) {
 	case int:

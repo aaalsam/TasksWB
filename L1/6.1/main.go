@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// Завершается естественным путем
+
 func main() {
 
 	wg := new(sync.WaitGroup)

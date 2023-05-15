@@ -19,6 +19,8 @@ func main() {
 
 	removeI(sl, i)
 
+	remove(sl, i)
+
 	fmt.Println(sl)
 }
 
@@ -26,4 +28,8 @@ func removeI(sl []int, i int) {
 	sl[i] = sl[len(sl)-1] // копируем последний элемент в индекс i
 	sl = sl[:len(sl)-1]   // Урезаем слайс
 	fmt.Println(sl)
+}
+
+func remove (slice []int, i int) []int {
+	return append(slice[:i], slice[i+1:]...)
 }

@@ -20,9 +20,10 @@ func main() {
 
 	ch := make(chan int)
 
+	//Создаем канал для прерываний
 	osSignal := make(chan os.Signal, 1) // Сигнал SIGINT отправляется при введении пользователем в управляющем терминале символа прерывания, по умолчанию это ^C (Control-C).
-	// перехватыват сигнала
-	signal.Notify(osSignal, syscall.SIGINT) // Если в osSignal поступит сигнал SIGINT, то в канал osSignal запишется значение
+	// перехватыват сигнала. signal.Notify регистрирует данный канал для получений уведомлений об определенных сигналах от ОС
+	signal.Notify(osSignal, syscall.SIGINT) 
 
 	read(ch, n)
 
@@ -41,7 +42,7 @@ func read(ch chan int, n int) {
 
 func write(ch chan int, osSignal chan os.Signal) {
 	for {
-		select { // Оператор select позволяет go-процедуре находиться в ожидании нескольких операций передачи данных.
+		select { //С помощью неблокирующего оператора select читаем два канал
 		case <-osSignal:
 			close(ch)
 			fmt.Println("Завершено")

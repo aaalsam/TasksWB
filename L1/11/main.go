@@ -13,17 +13,17 @@ func main() {
 	set[5] = struct{}{}
 	set[2] = struct{}{}
 
-	set1 := make(map[int]struct{}) // структура используется, когда информация не должна храниться
+	set1 := make(map[int]struct{})
 
-	set1[0] = struct{}{} // Это литерал составной структуры. Он встроенный определяет тип структуры и определяет структуру и не присваивает свойства.
-	set1[1] = struct{}{} 
+	set1[0] = struct{}{} 
+	set1[1] = struct{}{}
 	set1[2] = struct{}{}
 
 	fmt.Println(intersectionSets(set, set1))
 
 }
 
-func intersectionSets(set map[int]struct{}, set1 map[int]struct{}) *map[int]struct{} { // Функция возвражает пересечение двух множеств
+func intersectionSets(set map[int]struct{}, set1 map[int]struct{}) *map[int]struct{} { // Функция возвращает пересечение двух множеств
 
 	set2 := make(map[int]struct{})
 
@@ -31,7 +31,7 @@ func intersectionSets(set map[int]struct{}, set1 map[int]struct{}) *map[int]stru
 		set, set1 = set1, set
 	}
 
-	for e := range set { 
+	for e := range set {
 		if _, ok := set1[e]; ok { // В set2 добавляется элемент из set, если он содержится в set1
 			set2[e] = struct{}{}
 		}

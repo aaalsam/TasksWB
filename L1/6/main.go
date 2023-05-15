@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	ctx, cancel := context.WithCancel(context.Background()) // Контекст с отменой
+	ctx, cancel := context.WithCancel(context.Background()) //  Закрытие с помощью контекста с отменой
 
 	ch := make(chan int)
 
@@ -20,7 +20,7 @@ func main() {
 
 	cancel() // Отмена контекста 
 
-	time.Sleep(1 * time.Second) // Либо со слипом, либо с группой
+	time.Sleep(1 * time.Second) 
 
 }
 
